@@ -3,22 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#DC2626">
+    <meta name="msapplication-TileColor" content="#DC2626">
     <title>Dr. Igor Lacerda - Advogado Especialista | Pedreiras/MA</title>
     <meta name="description" content="Dr. Igor Lacerda - Advogado especialista em Direito Civil, Previdenciário, Trabalhista e Penal. Mais de 45 anos de tradição jurídica em Pedreiras/MA.">
     <meta name="keywords" content="advogado Pedreiras, advogado previdenciário MA, escritório advocacia Pedreiras, Dr Igor Lacerda">
     
-    <!-- Fonts -->
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Fonts - Optimized Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome - Optimized Loading -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Critical above-the-fold styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 2px solid #DC2626;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #1F2937 100%);
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #000000, #DC2626); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease;">
+        <div style="text-align: center; color: #ffffff;">
+            <div style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #ffffff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
+            <p style="font-size: 1.1rem; font-weight: 500;">Carregando...</p>
+        </div>
+    </div>
+    
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
@@ -44,9 +105,9 @@
                 <a href="#agendamento" class="btn-primary">Agendar Consulta</a>
                 
                 <button class="mobile-menu-btn" id="mobile-menu-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </div>
@@ -55,7 +116,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
-            <div class="hero-overlay"></div>
+            <div class="hero-overlay" data-parallax="0.5"></div>
         </div>
         <div class="container">
             <div class="hero-content">
@@ -137,7 +198,7 @@
             <div class="areas-grid">
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-balance-scale"></i>
+                        <i class="fas fa-balance-scale" aria-hidden="true"></i>
                     </div>
                     <h3>Direito Civil</h3>
                     <p>Contratos, responsabilidade civil, inventários, indenizações.</p>
@@ -145,7 +206,7 @@
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-user-shield"></i>
+                        <i class="fas fa-user-shield" aria-hidden="true"></i>
                     </div>
                     <h3>Direito Previdenciário</h3>
                     <p>Aposentadorias, revisões, benefícios do INSS.</p>
@@ -153,15 +214,15 @@
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
+                        <i class="fas fa-briefcase" aria-hidden="true"></i>
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     <h3>Direito Trabalhista</h3>
                     <p>Rescisões, direitos trabalhistas, ações contra empresas.</p>
                 </div>
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-gavel"></i>
+                        <i class="fas fa-gavel" aria-hidden="true"></i>
                     </div>
                     <h3>Direito Penal</h3>
                     <p>Defesa criminal, júri, sustentações orais.</p>
@@ -169,7 +230,7 @@
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-file-contract"></i>
+                        <i class="fas fa-file-contract" aria-hidden="true"></i>
                     </div>
                     <h3>Direito Processual Civil</h3>
                     <p>Consultas estratégicas e condução de processos complexos.</p>
@@ -192,15 +253,15 @@
                 </div>
                 <div class="agendamento-features">
                     <div class="feature">
-                        <i class="fas fa-calendar-check"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         <span>Horários flexíveis</span>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-video"></i>
+                        <i class="fas fa-video" aria-hidden="true"></i>
                         <span>Atendimento online</span>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         <span>Sigilo garantido</span>
                     </div>
                 </div>
@@ -219,7 +280,7 @@
             <div class="contato-content">
                 <div class="contato-info">
                     <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <div>
                             <h4>Endereço</h4>
                             <p>Rua Miguel Atta, nº 18 – Centro<br>Pedreiras/MA</p>
@@ -227,7 +288,7 @@
                     </div>
                     
                     <div class="info-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <div>
                             <h4>Telefone</h4>
                             <p>(99) 3642-7826</p>
@@ -235,7 +296,7 @@
                     </div>
                     
                     <div class="info-item">
-                        <i class="fab fa-whatsapp"></i>
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
                         <div>
                             <h4>WhatsApp</h4>
                             <p>(99) 98468-0391</p>
@@ -243,7 +304,7 @@
                     </div>
                     
                     <div class="info-item">
-                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
                         <div>
                             <h4>Instagram</h4>
                             <p>@igolacerda.adv</p>
@@ -253,16 +314,16 @@
                 
                 <form class="contato-form" id="contato-form">
                     <div class="form-group">
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-label="Nome completo">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required aria-label="Endereço de e-mail">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="assunto" name="assunto" placeholder="Assunto" required>
+                        <input type="text" id="assunto" name="assunto" placeholder="Assunto" required aria-label="Assunto da mensagem">
                     </div>
                     <div class="form-group">
-                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
+                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" rows="5" required aria-label="Mensagem"></textarea>
                     </div>
                     <button type="submit" class="btn-form">Enviar Mensagem</button>
                 </form>
@@ -276,6 +337,7 @@
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy" 
+                    title="Localização do escritório Dr. Igor Lacerda"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
@@ -312,12 +374,12 @@
                 <div class="footer-social">
                     <h4>Redes Sociais</h4>
                     <div class="social-links">
-                        <a href="https://instagram.com/igolacerda.adv" target="_blank">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://instagram.com/igolacerda.adv" target="_blank" aria-label="Instagram do Dr. Igor Lacerda">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="https://wa.me/5599984680391" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                        <a href="https://wa.me/5599984680391" target="_blank" aria-label="WhatsApp do Dr. Igor Lacerda">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    <i class="fas fa-user-tie" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -330,11 +392,24 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5599984680391" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/5599984680391" class="whatsapp-float" target="_blank" aria-label="Contato via WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    
+    <!-- Remove loading screen when page is loaded -->
+    <script>
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }
+        });
+    </script>
 </body>
 </html>
