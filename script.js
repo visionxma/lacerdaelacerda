@@ -37,23 +37,6 @@
         };
     };
 
-    // Lazy Loading de imagens
-    const lazyLoadImages = () => {
-        const images = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-    };
-
     // Mobile Menu com animações suaves
     class MobileMenu {
         constructor() {
@@ -214,10 +197,7 @@
 
         init() {
             // Observer para elementos que aparecem
-            this.createObserver('.area-card, .credential-item, .info-item', 'animate');
-            
-            // Observer específico para contadores
-            this.createCounterObserver();
+            this.createObserver('.area-card, .credential-item, .info-item, .equipe-card', 'animate');
         }
 
         createObserver(selector, className) {
@@ -236,48 +216,6 @@
             elements.forEach(el => {
                 observer.observe(el);
             });
-        }
-
-        createCounterObserver() {
-            const counters = document.querySelectorAll('[data-count]');
-            if (counters.length === 0) return;
-
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        this.animateCounter(entry.target);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            counters.forEach(counter => counterObserver.observe(counter));
-        }
-
-        animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-count'));
-            const duration = 2000;
-            const startTime = performance.now();
-            const startValue = 0;
-
-            const updateCounter = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                // Easing function
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuart);
-                
-                element.textContent = currentValue;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            };
-
-            requestAnimationFrame(updateCounter);
         }
     }
 
@@ -471,42 +409,6 @@
         }
     }
 
-    // Parallax Effect otimizado
-    class ParallaxController {
-        constructor() {
-            this.elements = document.querySelectorAll('[data-parallax]');
-            this.ticking = false;
-            
-            this.init();
-        }
-
-        init() {
-            if (this.elements.length === 0) return;
-            
-            const handleScroll = () => {
-                if (!this.ticking) {
-                    requestAnimationFrame(() => {
-                        this.updateParallax();
-                        this.ticking = false;
-                    });
-                    this.ticking = true;
-                }
-            };
-
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        }
-
-        updateParallax() {
-            const scrolled = window.pageYOffset;
-            
-            this.elements.forEach(element => {
-                const speed = element.dataset.parallax || 0.5;
-                const yPos = -(scrolled * speed);
-                element.style.transform = `translateY(${yPos}px)`;
-            });
-        }
-    }
-
     // Performance Monitor
     class PerformanceMonitor {
         constructor() {
@@ -569,33 +471,19 @@
         new AnimationController();
         new NavigationController();
         new FormHandler();
-        new ParallaxController();
         new PerformanceMonitor();
-        
-        // Lazy loading
-        lazyLoadImages();
         
         // Adicionar classe de carregamento completo
         document.body.classList.add('loaded');
         
-        // Preload de recursos críticos
-        preloadCriticalResources();
-    };
-
-    // Preload de recursos críticos
-    const preloadCriticalResources = () => {
-        const criticalResources = [
-            'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap',
-            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-        ];
-
-        criticalResources.forEach(url => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'style';
-            link.href = url;
-            document.head.appendChild(link);
-        });
+        // Remover loading screen
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
     };
 
     // Event Listeners
@@ -641,7 +529,8 @@
             
             .area-card,
             .credential-item,
-            .info-item {
+            .info-item,
+            .equipe-card {
                 transform: translateZ(0);
                 backface-visibility: hidden;
             }

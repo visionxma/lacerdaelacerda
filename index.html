@@ -4,98 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#DC2626">
-    <meta name="msapplication-TileColor" content="#DC2626">
-    <title>Dr. Igor Lacerda - Advogado Especialista | Pedreiras/MA</title>
-    <meta name="description" content="Dr. Igor Lacerda - Advogado especialista em Direito Civil, Previdenciário, Trabalhista e Penal. Mais de 45 anos de tradição jurídica em Pedreiras/MA.">
-    <meta name="keywords" content="advogado Pedreiras, advogado previdenciário MA, escritório advocacia Pedreiras, Dr Igor Lacerda">
+    <title>Lacerda & Lacerda Advogados - Tradição Jurídica desde 1979 | Pedreiras/MA</title>
+    <meta name="description" content="Lacerda & Lacerda Advogados - Mais de 45 anos de tradição jurídica em Pedreiras/MA. Especialistas em Direito Civil, Previdenciário, Trabalhista e Penal.">
+    <meta name="keywords" content="advogado Pedreiras, escritório advocacia MA, direito civil, previdenciário, trabalhista, penal, Dr Igo Lacerda">
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
     
-    <!-- Fonts - Optimized Loading -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome - Optimized Loading -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Critical CSS Inline -->
-    <style>
-        /* Critical above-the-fold styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #ffffff;
-            background-color: #000000;
-            overflow-x: hidden;
-        }
-        
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 2px solid #DC2626;
-        }
-        
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #000000 0%, #1F2937 100%);
-            color: #ffffff;
-        }
-    </style>
 </head>
 <body>
     <!-- Loading Screen -->
-    <div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #000000, #DC2626); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease;">
-        <div style="text-align: center; color: #ffffff;">
-            <div style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #ffffff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
-            <p style="font-size: 1.1rem; font-weight: 500;">Carregando...</p>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Carregando...</p>
         </div>
     </div>
-    
-    <style>
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
 
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">IL</div>
+                    <div class="logo-icon">L&L</div>
                     <div class="logo-text">
-                        <span class="logo-name">Dr. Igor Lacerda</span>
-                        <span class="logo-subtitle">Advogado</span>
+                        <span class="logo-name">Lacerda & Lacerda</span>
+                        <span class="logo-subtitle">Advogados</span>
                     </div>
                 </div>
                 
                 <nav class="nav" id="nav">
                     <ul class="nav-list">
-                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#inicio" class="nav-link">Início</a></li>
                         <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                        <li><a href="#equipe" class="nav-link">Equipe</a></li>
                         <li><a href="#areas" class="nav-link">Áreas de Atuação</a></li>
                         <li><a href="#agendamento" class="nav-link">Agendamento</a></li>
                         <li><a href="#contato" class="nav-link">Contato</a></li>
@@ -104,29 +57,27 @@
                 
                 <a href="#agendamento" class="btn-primary">Agendar Consulta</a>
                 
-                <button class="mobile-menu-btn" id="mobile-menu-btn">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="inicio" class="hero">
         <div class="hero-background">
-            <div class="hero-overlay" data-parallax="0.5"></div>
+            <div class="hero-overlay"></div>
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    Mais de 45 anos de tradição jurídica a serviço da justiça e da cidadania
-                </h1>
-                <div class="hero-bio">
-                    <p>Dr. Igor Lacerda é advogado especialista em Direito Civil, com atuação destacada nas áreas Cível, Previdenciária, Trabalhista e Penal. Atual Conselheiro da OAB Pedreiras/MA, segue o legado jurídico fundado em 1979 por seu pai, Dr. José Lacerda.</p>
+                <h1 class="hero-title">Tradição, ética e excelência jurídica desde 1979</h1>
+                <div class="hero-description">
+                    <p>O Lacerda & Lacerda Advogados é um escritório com mais de 45 anos de tradição jurídica em Pedreiras/MA. Fundado em 1979, é referência em Direito Civil, Previdenciário, Trabalhista e Penal.</p>
                 </div>
-                <a href="#agendamento" class="btn-hero">Agende sua consulta agora</a>
+                <a href="#agendamento" class="btn-hero">Agende sua consulta com a equipe</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -138,17 +89,17 @@
     <section id="sobre" class="sobre">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Sobre o Dr. Igor Lacerda</h2>
+                <h2 class="section-title">Sobre o Dr. Igo Lacerda</h2>
                 <div class="section-line"></div>
             </div>
             
             <div class="sobre-content">
                 <div class="sobre-text">
                     <p class="sobre-description">
-                        Advogado com mais de 12 anos de experiência, especialista em Direito Civil. Sócio da Lacerda & Lacerda Sociedade de Advogados, escritório com tradição desde 1979. Atua também como professor universitário e Conselheiro da OAB.
+                        Dr. Igo Lacerda é advogado com mais de 12 anos de atuação. Especialista em Direito Civil, é Conselheiro da OAB Pedreiras/MA (triênio 2025–2027), professor universitário e sócio do Lacerda & Lacerda.
                     </p>
                     <p class="sobre-description">
-                        Reconhecido pela sua habilidade em sustentação oral, prática forense e dedicação ao cliente, Dr. Igor Lacerda mantém os valores de excelência e ética que caracterizam o escritório há mais de quatro décadas.
+                        Segue o legado jurídico fundado por seu pai, com compromisso, ética e resultado. Reconhecido pela sua dedicação ao cliente, clareza técnica e atuação estratégica em casos complexos.
                     </p>
                     
                     <div class="credentials">
@@ -163,7 +114,7 @@
                             <i class="fas fa-gavel"></i>
                             <div>
                                 <h4>Conselheiro da OAB</h4>
-                                <p>OAB Pedreiras/MA</p>
+                                <p>OAB Pedreiras/MA (2025-2027)</p>
                             </div>
                         </div>
                         <div class="credential-item">
@@ -179,7 +130,69 @@
                 <div class="sobre-image">
                     <div class="image-placeholder">
                         <i class="fas fa-user-tie"></i>
-                        <p>Dr. Igor Lacerda</p>
+                        <p>Dr. Igo Lacerda</p>
+                        <span>Foto será inserida aqui</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe Section -->
+    <section id="equipe" class="equipe">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossa Equipe Jurídica</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Profissionais experientes e comprometidos com a excelência</p>
+            </div>
+            
+            <div class="equipe-grid">
+                <div class="equipe-card">
+                    <div class="equipe-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Foto do Dr. Igo Lacerda</span>
+                        </div>
+                    </div>
+                    <div class="equipe-info">
+                        <h3>Dr. Igo Lacerda</h3>
+                        <p class="equipe-role">Advogado Especialista</p>
+                        <p class="equipe-description">
+                            Advogado especialista em Direito Civil, atua também nas áreas Previdenciária, Trabalhista e Penal. Conhecido pela dedicação ao cliente, clareza técnica e atuação estratégica.
+                        </p>
+                        <div class="equipe-specialties">
+                            <span class="specialty">Direito Civil</span>
+                            <span class="specialty">Previdenciário</span>
+                            <span class="specialty">Trabalhista</span>
+                            <span class="specialty">Penal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="equipe-card">
+                    <div class="equipe-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Foto do Dr. Lacerda</span>
+                        </div>
+                    </div>
+                    <div class="equipe-info">
+                        <h3>Dr. Lacerda</h3>
+                        <p class="equipe-role">Fundador</p>
+                        <p class="equipe-description">
+                            Advogado desde 1979, formado pela Universidade Federal do Pará. É o atual decano da OAB de Pedreiras e ganhador da Medalha Antenor Bogéa, a maior comenda da OAB do Maranhão. Reconhecido como o advogado mais antigo da história de Pedreiras, é símbolo de respeito, sabedoria e tradição jurídica.
+                        </p>
+                        <div class="equipe-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-medal"></i>
+                                <span>Medalha Antenor Bogéa</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-crown"></i>
+                                <span>Decano da OAB Pedreiras</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -198,42 +211,72 @@
             <div class="areas-grid">
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                        <i class="fas fa-balance-scale"></i>
                     </div>
                     <h3>Direito Civil</h3>
-                    <p>Contratos, responsabilidade civil, inventários, indenizações.</p>
+                    <p>Contratos, indenizações, inventários e questões patrimoniais com segurança jurídica.</p>
+                    <ul class="area-services">
+                        <li>Contratos em geral</li>
+                        <li>Responsabilidade civil</li>
+                        <li>Inventários e sucessões</li>
+                        <li>Direito imobiliário</li>
+                    </ul>
                 </div>
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-user-shield" aria-hidden="true"></i>
+                        <i class="fas fa-user-shield"></i>
                     </div>
                     <h3>Direito Previdenciário</h3>
-                    <p>Aposentadorias, revisões, benefícios do INSS.</p>
+                    <p>Aposentadorias, revisões de benefícios e direitos junto ao INSS.</p>
+                    <ul class="area-services">
+                        <li>Aposentadorias</li>
+                        <li>Revisões de benefícios</li>
+                        <li>Auxílios e pensões</li>
+                        <li>Recursos administrativos</li>
+                    </ul>
                 </div>
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-briefcase" aria-hidden="true"></i>
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        <i class="fas fa-briefcase"></i>
+                    </div>
                     <h3>Direito Trabalhista</h3>
-                    <p>Rescisões, direitos trabalhistas, ações contra empresas.</p>
+                    <p>Rescisões, verbas trabalhistas e ações contra empregadores.</p>
+                    <ul class="area-services">
+                        <li>Rescisões contratuais</li>
+                        <li>Verbas trabalhistas</li>
+                        <li>Ações trabalhistas</li>
+                        <li>Acordos e negociações</li>
+                    </ul>
                 </div>
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-gavel" aria-hidden="true"></i>
+                        <i class="fas fa-gavel"></i>
                     </div>
                     <h3>Direito Penal</h3>
-                    <p>Defesa criminal, júri, sustentações orais.</p>
+                    <p>Defesa técnica especializada e atuação no Tribunal do Júri.</p>
+                    <ul class="area-services">
+                        <li>Defesa criminal</li>
+                        <li>Tribunal do Júri</li>
+                        <li>Recursos penais</li>
+                        <li>Habeas Corpus</li>
+                    </ul>
                 </div>
                 
                 <div class="area-card">
                     <div class="area-icon">
-                        <i class="fas fa-file-contract" aria-hidden="true"></i>
+                        <i class="fas fa-file-contract"></i>
                     </div>
                     <h3>Direito Processual Civil</h3>
-                    <p>Consultas estratégicas e condução de processos complexos.</p>
+                    <p>Consultas estratégicas e recursos em processos complexos.</p>
+                    <ul class="area-services">
+                        <li>Consultas estratégicas</li>
+                        <li>Recursos cíveis</li>
+                        <li>Execuções</li>
+                        <li>Medidas cautelares</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -245,24 +288,45 @@
             <div class="agendamento-content">
                 <div class="agendamento-text">
                     <h2>Agendamento de Consultas</h2>
-                    <p>Atendimento presencial ou online. Escolha o melhor horário e tenha sua consulta com segurança e sigilo.</p>
+                    <p>Atendimento presencial ou online. Escolha o melhor horário para sua consulta com nossa equipe jurídica.</p>
+                    <div class="agendamento-features">
+                        <div class="feature">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Horários flexíveis</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-video"></i>
+                            <span>Atendimento online</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Sigilo garantido</span>
+                        </div>
+                    </div>
                     <a href="https://wa.me/5599984680391" target="_blank" class="btn-agendamento">
                         <i class="fab fa-whatsapp"></i>
-                        Clique aqui para agendar sua consulta
+                        Agendar agora
                     </a>
                 </div>
-                <div class="agendamento-features">
-                    <div class="feature">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
-                        <span>Horários flexíveis</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-video" aria-hidden="true"></i>
-                        <span>Atendimento online</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        <span>Sigilo garantido</span>
+                <div class="agendamento-visual">
+                    <div class="calendar-mockup">
+                        <div class="calendar-header">
+                            <h4>Dezembro 2024</h4>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day available">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day available">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day available">9</div>
+                            <div class="calendar-day selected">10</div>
+                            <div class="calendar-day">11</div>
+                            <div class="calendar-day available">12</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -275,12 +339,13 @@
             <div class="section-header">
                 <h2 class="section-title">Entre em Contato</h2>
                 <div class="section-line"></div>
+                <p class="section-subtitle">Estamos prontos para atendê-lo</p>
             </div>
             
             <div class="contato-content">
                 <div class="contato-info">
                     <div class="info-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Endereço</h4>
                             <p>Rua Miguel Atta, nº 18 – Centro<br>Pedreiras/MA</p>
@@ -288,7 +353,7 @@
                     </div>
                     
                     <div class="info-item">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone"></i>
                         <div>
                             <h4>Telefone</h4>
                             <p>(99) 3642-7826</p>
@@ -296,34 +361,34 @@
                     </div>
                     
                     <div class="info-item">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        <i class="fab fa-instagram"></i>
                         <div>
-                            <h4>WhatsApp</h4>
-                            <p>(99) 98468-0391</p>
+                            <h4>Instagram</h4>
+                            <p>@igolacerda.adv</p>
                         </div>
                     </div>
                     
                     <div class="info-item">
-                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                        <i class="fab fa-whatsapp"></i>
                         <div>
-                            <h4>Instagram</h4>
-                            <p>@igolacerda.adv</p>
+                            <h4>WhatsApp</h4>
+                            <p>(99) 98468-0391</p>
                         </div>
                     </div>
                 </div>
                 
                 <form class="contato-form" id="contato-form">
                     <div class="form-group">
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-label="Nome completo">
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required aria-label="Endereço de e-mail">
+                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="assunto" name="assunto" placeholder="Assunto" required aria-label="Assunto da mensagem">
+                        <input type="text" id="assunto" name="assunto" placeholder="Assunto" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" rows="5" required aria-label="Mensagem"></textarea>
+                        <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn-form">Enviar Mensagem</button>
                 </form>
@@ -337,8 +402,7 @@
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy" 
-                    title="Localização do escritório Dr. Igor Lacerda"
-                    referrerpolicy="no-referrer-when-downgrade">
+                    title="Localização do escritório Lacerda & Lacerda Advogados">
                 </iframe>
             </div>
         </div>
@@ -350,21 +414,22 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <div class="logo-icon">IL</div>
+                        <div class="logo-icon">L&L</div>
                         <div class="logo-text">
-                            <span class="logo-name">Dr. Igor Lacerda</span>
-                            <span class="logo-subtitle">OAB/MA</span>
+                            <span class="logo-name">Lacerda & Lacerda</span>
+                            <span class="logo-subtitle">Advogados</span>
                         </div>
                     </div>
-                    <p>Lacerda & Lacerda Sociedade de Advogados – Desde 1979</p>
+                    <p>Lacerda & Lacerda Advogados – Desde 1979</p>
                     <p>CNPJ: 12.345.678/0001-90 | OAB/MA: 12345</p>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
+                        <li><a href="#inicio">Início</a></li>
                         <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#equipe">Equipe</a></li>
                         <li><a href="#areas">Áreas de Atuação</a></li>
                         <li><a href="#contato">Contato</a></li>
                         <li><a href="#" onclick="alert('Em desenvolvimento')">Política de Privacidade</a></li>
@@ -374,18 +439,25 @@
                 <div class="footer-social">
                     <h4>Redes Sociais</h4>
                     <div class="social-links">
-                        <a href="https://instagram.com/igolacerda.adv" target="_blank" aria-label="Instagram do Dr. Igor Lacerda">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        <a href="https://instagram.com/igolacerda.adv" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/5599984680391" target="_blank" aria-label="WhatsApp do Dr. Igor Lacerda">
-                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                    <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        <a href="https://wa.me/5599984680391" target="_blank" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#agendamento" aria-label="Agendar consulta">
+                            <i class="fas fa-calendar-check"></i>
+                        </a>
+                    </div>
+                    <div class="oab-seal">
+                        <i class="fas fa-certificate"></i>
+                        <span>OAB/MA</span>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Dr. Igor Lacerda. Todos os direitos reservados.</p>
+                <p>&copy; 2024 Lacerda & Lacerda Advogados. Todos os direitos reservados.</p>
                 <p class="footer-quote">"A justiça é a primeira virtude das instituições sociais" - John Rawls</p>
             </div>
         </div>
@@ -393,23 +465,10 @@
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/5599984680391" class="whatsapp-float" target="_blank" aria-label="Contato via WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- JavaScript -->
-    <script src="script.js" defer></script>
-    
-    <!-- Remove loading screen when page is loaded -->
-    <script>
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
