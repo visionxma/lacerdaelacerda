@@ -365,7 +365,7 @@
         }
 
         createWhatsAppMessage(data) {
-            const message = `Olá! Meu nome é ${data.nome}.%0A%0A*Assunto:* ${data.assunto}%0A%0A*Mensagem:* ${data.mensagem}%0A%0A*E-mail para contato:* ${data.email}`;
+            const message = `Olá! Meu nome é ${data.nome}.\n\n*Assunto:* ${data.assunto}\n\n*Mensagem:* ${data.mensagem}\n\n*E-mail para contato:* ${data.email}`;
             return encodeURIComponent(message);
         }
 
