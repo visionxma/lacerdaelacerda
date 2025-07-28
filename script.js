@@ -354,7 +354,7 @@
             const whatsappMessage = this.createWhatsAppMessage(data);
             
             // Abrir WhatsApp
-            window.open(`https://wa.me/5599984680391?text=${whatsappMessage}`, '_blank');
+            window.open(`https://wa.me/5599981983630?text=${whatsappMessage}`, '_blank');
             
             // Mostrar mensagem de sucesso
             this.showMessage('Redirecionando para o WhatsApp...', 'success');
