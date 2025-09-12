@@ -9,6 +9,24 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
 }
+.btn-lattes {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 10px 16px;
+  background: #DC2626;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background .2s;
+}
+
+.btn-lattes:hover {
+  background: #DC2626;
+}
+
 /* Created by VisionX */
 .created-by {
   display: flex;
@@ -476,7 +494,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .image-placeholder {
-    width: 300px;
+    width: 600px;
     height: 400px;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     border-radius: 12px;
