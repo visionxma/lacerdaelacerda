@@ -464,8 +464,75 @@
             console.warn('Alguns elementos críticos não foram encontrados');
         }
 
+        // Detectar tipo de dispositivo para otimizações específicas
+        const isMobile = window.innerWidth <= 768;
+        const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        // Adicionar classes CSS baseadas no dispositivo
+        document.body.classList.add(
+            isMobile ? 'is-mobile' : isTablet ? 'is-tablet' : 'is-desktop'
+        );
+        
+        if (isTouch) {
+            document.body.classList.add('is-touch');
+        }
+        
+        // Otimizações específicas para mobile
+        if (isMobile) {
+            // Prevenir zoom em inputs no iOS
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    if (window.innerWidth < 768) {
+                        const viewport = document.querySelector('meta[name="viewport"]');
+                        if (viewport) {
+                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                        }
+                    }
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (window.innerWidth < 768) {
+                        const viewport = document.querySelector('meta[name="viewport"]');
+                        if (viewport) {
+                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Listener para mudanças de orientação
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                // Recalcular layout após mudança de orientação
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+        });
+        
+        // Listener para redimensionamento responsivo
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const newIsMobile = window.innerWidth <= 768;
+                const newIsTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                
+                // Atualizar classes do body
+                document.body.classList.remove('is-mobile', 'is-tablet', 'is-desktop');
+                document.body.classList.add(
+                    newIsMobile ? 'is-mobile' : newIsTablet ? 'is-tablet' : 'is-desktop'
+                );
+                
+                // Fechar menu mobile se mudou para desktop
+                if (!newIsMobile && window.mobileMenu && window.mobileMenu.isOpen) {
+                    window.mobileMenu.close();
+                }
+            }, 250);
+        });
         // Inicializar componentes
-        new MobileMenu();
+        window.mobileMenu = new MobileMenu();
         new HeaderController();
         new SmoothScroller();
         new AnimationController();
