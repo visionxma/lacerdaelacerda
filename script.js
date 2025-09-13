@@ -454,6 +454,109 @@
         }
     }
 
+    // Fraud Alert Controller
+    class FraudAlertController {
+        constructor() {
+            this.alert = document.getElementById('fraud-alert');
+            this.closeBtn = document.getElementById('fraud-alert-close');
+            this.isMinimized = false;
+            this.isHidden = false;
+            
+            this.init();
+        }
+
+        init() {
+            if (!this.alert || !this.closeBtn) return;
+            
+            // Verificar se o usuário já fechou o alerta (localStorage)
+            const alertClosed = localStorage.getItem('fraudAlertClosed');
+            const alertClosedTime = localStorage.getItem('fraudAlertClosedTime');
+            
+            // Mostrar alerta novamente após 7 dias
+            if (alertClosed && alertClosedTime) {
+                const daysSinceClosed = (Date.now() - parseInt(alertClosedTime)) / (1000 * 60 * 60 * 24);
+                if (daysSinceClosed < 7) {
+                    this.hide();
+                    return;
+                }
+            }
+            
+            // Event listeners
+            this.closeBtn.addEventListener('click', this.handleClose.bind(this));
+            this.alert.addEventListener('click', this.handleClick.bind(this));
+            
+            // Auto-minimizar após 10 segundos
+            setTimeout(() => {
+                if (!this.isHidden) {
+                    this.minimize();
+                }
+            }, 10000);
+            
+            // Mostrar alerta com animação após 3 segundos
+            setTimeout(() => {
+                this.show();
+            }, 3000);
+        }
+
+        show() {
+            if (this.alert) {
+                this.alert.style.opacity = '0';
+                this.alert.style.transform = 'translateX(-100%)';
+                this.alert.style.display = 'block';
+                
+                requestAnimationFrame(() => {
+                    this.alert.style.transition = 'all 0.5s ease-out';
+                    this.alert.style.opacity = '1';
+                    this.alert.style.transform = 'translateX(0)';
+                });
+            }
+        }
+
+        minimize() {
+            if (this.alert && !this.isMinimized && !this.isHidden) {
+                this.alert.classList.add('minimized');
+                this.isMinimized = true;
+            }
+        }
+
+        expand() {
+            if (this.alert && this.isMinimized) {
+                this.alert.classList.remove('minimized');
+                this.isMinimized = false;
+                
+                // Auto-minimizar novamente após 8 segundos
+                setTimeout(() => {
+                    if (!this.isHidden) {
+                        this.minimize();
+                    }
+                }, 8000);
+            }
+        }
+
+        hide() {
+            if (this.alert) {
+                this.alert.classList.add('hidden');
+                this.isHidden = true;
+                
+                // Salvar no localStorage
+                localStorage.setItem('fraudAlertClosed', 'true');
+                localStorage.setItem('fraudAlertClosedTime', Date.now().toString());
+            }
+        }
+
+        handleClose(e) {
+            e.stopPropagation();
+            this.hide();
+        }
+
+        handleClick(e) {
+            if (this.isMinimized && !e.target.closest('.fraud-alert-close')) {
+                e.preventDefault();
+                this.expand();
+            }
+        }
+    }
+
     // Inicialização quando DOM estiver pronto
     const initializeApp = () => {
         // Verificar se elementos críticos existem
