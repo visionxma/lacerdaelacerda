@@ -472,6 +472,7 @@
         new NavigationController();
         new FormHandler();
         new PerformanceMonitor();
+        new FraudAlertController();
         
         // Adicionar classe de carregamento completo
         document.body.classList.add('loaded');
