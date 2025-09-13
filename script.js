@@ -458,102 +458,95 @@
     class FraudAlertController {
         constructor() {
             this.alert = document.getElementById('fraud-alert');
+            this.circle = document.getElementById('fraud-alert-circle');
             this.closeBtn = document.getElementById('fraud-alert-close');
-            this.isMinimized = false;
-            this.isHidden = false;
+            this.isFirstVisit = false;
+            this.isAlertVisible = false;
             
             this.init();
         }
 
         init() {
-            if (!this.alert || !this.closeBtn) return;
+            if (!this.alert || !this.closeBtn || !this.circle) return;
             
-            // Verificar se o usuário já fechou o alerta (localStorage)
-            const alertClosed = localStorage.getItem('fraudAlertClosed');
-            const alertClosedTime = localStorage.getItem('fraudAlertClosedTime');
+            // Verificar se é a primeira visita
+            const hasVisited = localStorage.getItem('fraudAlertVisited');
             
-            // Mostrar alerta novamente após 7 dias
-            if (alertClosed && alertClosedTime) {
-                const daysSinceClosed = (Date.now() - parseInt(alertClosedTime)) / (1000 * 60 * 60 * 24);
-                if (daysSinceClosed < 7) {
-                    this.hide();
-                    return;
-                }
+            if (!hasVisited) {
+                // Primeira visita - mostrar card completo
+                this.isFirstVisit = true;
+                localStorage.setItem('fraudAlertVisited', 'true');
+                this.showAlert();
+            } else {
+                // Visitas subsequentes - mostrar apenas círculo
+                this.showCircle();
             }
             
             // Event listeners
             this.closeBtn.addEventListener('click', this.handleClose.bind(this));
-            this.alert.addEventListener('click', this.handleClick.bind(this));
+            this.circle.addEventListener('click', this.handleCircleClick.bind(this));
             
-            // Auto-minimizar após 10 segundos
-            setTimeout(() => {
-                if (!this.isHidden) {
-                    this.minimize();
-                }
-            }, 10000);
-            
-            // Mostrar alerta com animação após 3 segundos
-            setTimeout(() => {
-                this.show();
-            }, 3000);
-        }
-
-        show() {
-            if (this.alert) {
-                this.alert.style.opacity = '0';
-                this.alert.style.transform = 'translateX(-100%)';
-                this.alert.style.display = 'block';
-                
-                requestAnimationFrame(() => {
-                    this.alert.style.transition = 'all 0.5s ease-out';
-                    this.alert.style.opacity = '1';
-                    this.alert.style.transform = 'translateX(0)';
-                });
-            }
-        }
-
-        minimize() {
-            if (this.alert && !this.isMinimized && !this.isHidden) {
-                this.alert.classList.add('minimized');
-                this.isMinimized = true;
-            }
-        }
-
-        expand() {
-            if (this.alert && this.isMinimized) {
-                this.alert.classList.remove('minimized');
-                this.isMinimized = false;
-                
-                // Auto-minimizar novamente após 8 segundos
+            // Se for primeira visita, auto-fechar após 15 segundos
+            if (this.isFirstVisit) {
                 setTimeout(() => {
-                    if (!this.isHidden) {
-                        this.minimize();
+                    if (this.isAlertVisible) {
+                        this.hideAlert();
                     }
-                }, 8000);
+                }, 15000);
             }
         }
 
-        hide() {
-            if (this.alert) {
-                this.alert.classList.add('hidden');
-                this.isHidden = true;
+        showAlert() {
+            if (this.alert && !this.isAlertVisible) {
+                this.alert.classList.add('show');
+                this.isAlertVisible = true;
                 
-                // Salvar no localStorage
-                localStorage.setItem('fraudAlertClosed', 'true');
-                localStorage.setItem('fraudAlertClosedTime', Date.now().toString());
+                // Esconder círculo quando card estiver visível
+                this.hideCircle();
+            }
+        }
+
+        hideAlert() {
+            if (this.alert && this.isAlertVisible) {
+                this.alert.classList.remove('show');
+                this.isAlertVisible = false;
+                
+                // Mostrar círculo quando card for escondido
+                setTimeout(() => {
+                    this.showCircle();
+                }, 500); // Aguardar animação de saída
+            }
+        }
+
+        showCircle() {
+            if (this.circle && !this.isAlertVisible) {
+                setTimeout(() => {
+                    this.circle.classList.add('show');
+                }, 500); // Pequeno delay para suavizar transição
+            }
+        }
+
+        hideCircle() {
+            if (this.circle) {
+                this.circle.classList.remove('show');
             }
         }
 
         handleClose(e) {
             e.stopPropagation();
-            this.hide();
+            this.hideAlert();
         }
 
-        handleClick(e) {
-            if (this.isMinimized && !e.target.closest('.fraud-alert-close')) {
-                e.preventDefault();
-                this.expand();
-            }
+        handleCircleClick(e) {
+            e.preventDefault();
+            this.showAlert();
+            
+            // Auto-fechar após 10 segundos quando aberto via círculo
+            setTimeout(() => {
+                if (this.isAlertVisible) {
+                    this.hideAlert();
+                }
+            }, 10000);
         }
     }
 

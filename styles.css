@@ -1168,14 +1168,23 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 8px 30px rgba(220, 38, 38, 0.4);
     z-index: 1001;
     transition: var(--transition-smooth);
-    animation: alertPulse 3s infinite;
     border: 2px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     cursor: pointer;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
 }
 
-.fraud-alert:hover {
-    transform: translateY(-3px) scale(1.02);
+.fraud-alert.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+    animation: alertPulse 3s infinite;
+}
+
+.fraud-alert.show:hover {
+    transform: translateY(-3px) scale(1.02) translateX(0);
     box-shadow: 0 12px 40px rgba(220, 38, 38, 0.6);
 }
 
@@ -1253,34 +1262,56 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1);
 }
 
-.fraud-alert.minimized {
-    max-width: 60px;
+/* Círculo flutuante do alerta */
+.fraud-alert-circle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
     height: 60px;
-    padding: 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-}
-
-.fraud-alert.minimized .fraud-alert-header,
-.fraud-alert.minimized .fraud-alert-content,
-.fraud-alert.minimized .fraud-alert-contacts,
-.fraud-alert.minimized .fraud-alert-close {
-    display: none;
-}
-
-.fraud-alert.minimized::before {
-    content: '⚠️';
+    color: var(--accent-color);
     font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    animation: circlePulse 3s infinite;
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.fraud-alert-circle.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+
+.fraud-alert-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6);
+}
+
+.fraud-alert-circle::before {
+    content: '⚠️';
     animation: shake 2s infinite;
 }
 
-.fraud-alert.hidden {
-    opacity: 0;
-    transform: translateX(-100%);
-    pointer-events: none;
+/* Animação para o círculo */
+@keyframes circlePulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.7), 0 0 0 8px rgba(220, 38, 38, 0.1);
+    }
 }
 
 /* Alert Animations */
@@ -1488,12 +1519,11 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.75rem;
     }
     
-    .fraud-alert.minimized {
-        max-width: 50px;
+    .fraud-alert-circle {
+        width: 50px;
         height: 50px;
-    }
-    
-    .fraud-alert.minimized::before {
+        left: 15px;
+        bottom: 15px;
         font-size: 1.2rem;
     }
 }
@@ -1584,12 +1614,11 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.7rem;
     }
     
-    .fraud-alert.minimized {
-        max-width: 45px;
+    .fraud-alert-circle {
+        width: 45px;
         height: 45px;
-    }
-    
-    .fraud-alert.minimized::before {
+        left: 10px;
+        bottom: 10px;
         font-size: 1rem;
     }
 }
