@@ -166,9 +166,6 @@ h1, h2, h3, h4, h5, h6 {
 .logo-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: var(--accent-color);
-    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,7 +173,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     transition: var(--transition-fast);
 }
 
@@ -1030,7 +1026,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-logo .logo-icon {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: var(--accent-color);
 }
 
